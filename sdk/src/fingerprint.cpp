@@ -150,7 +150,7 @@ std::string get_username_win()
     std::vector<char> username_utf8(buffer_size);
     WideCharToMultiByte(CP_UTF8, 0, username_utf16, -1, &username_utf8[0], buffer_size, NULL, NULL);
 
-    return std::string(username_utf8.begin(), username_utf8.end() - 1); // -1 to remove null terminator
+    return trim(std::string(username_utf8.begin(), username_utf8.end() - 1)); // -1 to remove null terminator
 }
 #elif __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
